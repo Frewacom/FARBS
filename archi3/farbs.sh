@@ -22,6 +22,7 @@ esac done
 
 ftoolsrepo="https://github.com/Frewacom/FARBS-Tools"
 blocksrepo="https://github.com/Frewacom/FARBS-Blocks"
+mirrorlist="https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist"
 
 ### FUNCTIONS ###
 
@@ -201,6 +202,11 @@ sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 
 manualinstall $aurhelper || error "Failed to install AUR helper."
 
+# Get the FARBS mirrorlist and replace
+curl -Ls https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist | sed '/^#/d' > /tmp/mirrorlist
+mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.original
+mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
+
 # The command that does all the installing. Reads the progs.csv file and
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
@@ -208,7 +214,7 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 installationloop
 
 # Install the dotfiles in the user's home directory
-putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
+putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 #rm -f "/home/$name/README.md" "/home/$name/LICENSE"
 
 # Install the LARBS Firefox profile in ~/.mozilla/firefox/
@@ -219,6 +225,12 @@ putgitrepo "$blocksrepo" "/home/$name/.local/bin/statusbar" "master"
 
 # Install FARBS-Tools 
 putgitrepo "$ftoolsrepo" "/home/$name/.local/bin/ftools" "master"
+
+# Run pywal once so that colors.sh in .cache exists on startup
+wal -i "/home/$name/.config/wall.png"
+
+# Set locale to Swedish
+localectl set-locale LANG=sv_SE.UTF-8
 
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
