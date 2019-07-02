@@ -169,6 +169,11 @@ pacman -Syu --noconfirm --needed dialog ||  error "Are you sure you're running t
 # Welcome user.
 welcomemsg || error "User exited."
 
+# Set locale to Swedish
+sudo sed -i 's/#sv_SE.UTF-8 UTF-8/sv_SE.UTF-8 UTF-8/g' /etc/locale.gen
+locale-gen
+locale set-locale sv_SE.utf8
+
 # Get and verify username and password.
 getuserandpass || error "User exited."
 
