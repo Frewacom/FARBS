@@ -226,9 +226,6 @@ putgitrepo "$blocksrepo" "/home/$name/.local/bin/statusbar" "master"
 # Install FARBS-Tools 
 putgitrepo "$ftoolsrepo" "/home/$name/.local/bin/ftools" "master"
 
-# Set locale to Swedish
-localectl set-locale LANG=sv_SE.UTF-8
-
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
