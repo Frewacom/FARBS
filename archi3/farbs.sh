@@ -226,9 +226,6 @@ putgitrepo "$blocksrepo" "/home/$name/.local/bin/statusbar" "master"
 # Install FARBS-Tools 
 putgitrepo "$ftoolsrepo" "/home/$name/.local/bin/ftools" "master"
 
-# Run pywal once so that colors.sh in .cache exists on startup
-wal -i "/home/$name/.config/wall.png"
-
 # Set locale to Swedish
 localectl set-locale LANG=sv_SE.UTF-8
 
