@@ -171,6 +171,11 @@ welcomemsg || error "User exited."
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Syu --noconfirm
 
+# Get the FARBS mirrorlist and replace
+curl -Ls https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist | sed '/^#/d' > /tmp/mirrorlist
+mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.original
+mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
+
 # Set locale to Swedish
 sudo sed -i 's/#sv_SE.UTF-8 UTF-8/sv_SE.UTF-8 UTF-8/g' /etc/locale.gen
 locale-gen
@@ -208,11 +213,6 @@ grep "ILoveCandy" /etc/pacman.conf >/dev/null || sed -i "/#VerbosePkgLists/a ILo
 sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 
 manualinstall $aurhelper || error "Failed to install AUR helper."
-
-# Get the FARBS mirrorlist and replace
-curl -Ls https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist | sed '/^#/d' > /tmp/mirrorlist
-mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.original
-mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
 
 # The command that does all the installing. Reads the progs.csv file and
 # installs each needed program the way required. Be sure to run this only after
