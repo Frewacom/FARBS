@@ -20,8 +20,6 @@ esac done
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
 
-ftoolsrepo="https://github.com/Frewacom/FARBS-Tools"
-blocksrepo="https://github.com/Frewacom/FARBS-Blocks"
 mirrorlist="https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist"
 
 ### FUNCTIONS ###
