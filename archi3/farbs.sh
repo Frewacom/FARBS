@@ -156,7 +156,7 @@ resetpulse() { dialog --infobox "Reseting Pulseaudio..." 4 50
 }
 
 finalize(){ \
-	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nTo run the new graphical environment, log out and log back in as your new user, then run the command \"startx\" to start the graphical environment (it will start automatically in tty1).\\n\\n.t Luke" 12 80
+	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nType bash post-setup in home and let it log you out once completed to complete the installation." 12 80
 }
 
 ### THE ACTUAL SCRIPT ###
@@ -242,6 +242,9 @@ systembeepoff
 # serveral important commands, `shutdown`, `reboot`, updating, etc. without a password.
 newperms "%wheel ALL=(ALL) ALL #LARBS
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/systemctl suspend,/usr/bin/wifi-menu,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/packer -Syu,/usr/bin/packer -Syyu,/usr/bin/systemctl restart NetworkManager,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/yay,/usr/bin/pacman -Syyuw --noconfirm"
+
+ln -s /home/$name/.dotfiles/.local/bin/ftools/post-setup /home/$name/post-setup
+chmod +x /home/$name/post-setup
 
 # Last message! Install complete!
 finalize
