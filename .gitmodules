@@ -1,9 +1,0 @@
-[submodule "archi3/FARBS-Blocks"]
-	path = archi3/FARBS-Blocks
-	url = git@github.com:Frewacom/FARBS-Blocks.git
-[submodule "archi3/FARBS-Tools"]
-	path = archi3/FARBS-Tools
-	url = git@github.com:Frewacom/FARBS-Tools.git
-[submodule "archi3/FARBS-Dotfiles"]
-	path = archi3/FARBS-Dotfiles
-	url = git@github.com:Frewacom/FARBS-Dotfiles.git
