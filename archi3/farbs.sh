@@ -156,7 +156,7 @@ resetpulse() { dialog --infobox "Reseting Pulseaudio..." 4 50
 }
 
 finalize(){ \
-	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nType bash post-setup in home and let it log you out once completed to complete the installation." 12 80
+	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nLog out and log into your new user and type bash post-setup in home and let it log you out agian once completed to finish the installation." 12 80
 }
 
 ### THE ACTUAL SCRIPT ###
