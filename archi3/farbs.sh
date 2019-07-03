@@ -229,12 +229,6 @@ putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 # Install the LARBS Firefox profile in ~/.mozilla/firefox/
 putgitrepo "https://github.com/LukeSmithxyz/mozillarbs.git" "/home/$name/.mozilla/firefox"
 
-# Install FARBS i3blocks scripts 
-putgitrepo "$blocksrepo" "/home/$name/.local/bin/statusbar" "master"
-
-# Install FARBS-Tools 
-putgitrepo "$ftoolsrepo" "/home/$name/.local/bin/ftools" "master"
-
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
