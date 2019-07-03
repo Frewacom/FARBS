@@ -78,4 +78,4 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 ,steam,"Perhaps we can play some gamez"
 ,xbindkeys,"is used to bind mouse keys to keyboard commands"
 ,xautomation,"is also used to bind mouse keys to keyboard commands"
-
+,perl-anyevent-i3,"used to save the i3 layout tree for persisent workspace layouts"
