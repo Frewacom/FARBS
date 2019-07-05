@@ -225,9 +225,6 @@ installationloop
 putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 #rm -f "/home/$name/README.md" "/home/$name/LICENSE"
 
-# Install the FARBS Firefox profile in ~/.mozilla/firefox/
-putgitrepo "https://github.com/Frewacom/FARBS-Firefox" "/home/$name/.mozilla/firefox/farbs.default"
-
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
