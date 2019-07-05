@@ -79,5 +79,5 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 ,xbindkeys,"is used to bind mouse keys to keyboard commands"
 ,xautomation,"is also used to bind mouse keys to keyboard commands"
 ,perl-anyevent-i3,"used to save the i3 layout tree for persisent workspace layouts"
-,intel-ucode,"microcode updates to the kernel for intel users"
-,ttf-font-awesome,"downloads emojis that Fredrik hates"
+,intel-ucode,"microcode updates to the kernel for intel users."
+A,otf-font-awesome,"gives emojis that Fredrik hates but this version actually works."
