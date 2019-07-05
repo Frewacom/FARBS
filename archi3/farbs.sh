@@ -176,8 +176,9 @@ curl -Ls https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirro
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.original
 mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
 
-# Set locale to Swedish
+# Set locale to Swedish and add en_US to fix steam 
 sudo sed -i 's/#sv_SE.UTF-8 UTF-8/sv_SE.UTF-8 UTF-8/g' /etc/locale.gen
+sudo sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
 locale-gen
 localectl set-locale sv_SE.utf8
 
