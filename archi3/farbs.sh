@@ -20,6 +20,8 @@ esac done
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
 
+pywalfoxrepo="https://github.com/Frewacom/Pywalfox.git"
+
 mirrorlist="https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist"
 
 ### FUNCTIONS ###
@@ -224,6 +226,9 @@ installationloop
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 #rm -f "/home/$name/README.md" "/home/$name/LICENSE"
+
+# Install the firefox pywal theme
+putgitrepo "$pywalfoxrepo" "/home/$name/Repos/Pywalfox"
 
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
