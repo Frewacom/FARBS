@@ -223,6 +223,9 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 # and all build dependencies are installed.
 installationloop
 
+# Enable the bluetooth service
+systemctl enable bluetooth.service
+
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 #rm -f "/home/$name/README.md" "/home/$name/LICENSE"

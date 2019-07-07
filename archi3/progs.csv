@@ -82,3 +82,6 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 ,intel-ucode,"enables microcode updates to the kernel for intel users."
 A,otf-font-awesome,"gives emojis that Fredrik hates but this version actually works."
 A,spotify,"is used to listen to that music"
+,wmctrl,"controls windows, used for i3-resurrect"
+,bluez,"provides the Bluetooth protocol stack"
+,bluez-utils,"provides the bluetoothctl utility"
