@@ -21,7 +21,7 @@ esac done
 [ -z "$repobranch" ] && repobranch="master"
 
 pywalfoxrepo="https://github.com/Frewacom/Pywalfox.git"
-
+rssnotifyrepo="https://github.com/Frewacom/RSS-Notifier.git"
 mirrorlist="https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist"
 
 ### FUNCTIONS ###
@@ -232,6 +232,9 @@ putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 
 # Install the firefox pywal theme
 putgitrepo "$pywalfoxrepo" "/home/$name/Repos/Pywalfox"
+
+# Install RSS-Notify
+putgitrepo "$rssnotifyrepo" "/home/$name/Repos/RSS-Notify"
 
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
