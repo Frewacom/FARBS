@@ -245,6 +245,9 @@ serviceinit NetworkManager cronie
 # Most important command! Get rid of the beep!
 systembeepoff
 
+# Theme grub
+sed -i 's+#GRUB_THEME="/path/to/gfxtheme"+GRUB_THEME="/boot/grub/themes/arch-silence/theme.txt"+g' /etc/default/grub
+
 # Update the grub config to enable microcode updates automatically
 grub-mkconfig -o /boot/grub/grub.cfg
 
