@@ -15,7 +15,7 @@ while getopts ":a:r:b:p:h" o; do case "${o}" in
 esac done
 
 # DEFAULTS:
-[ -z "$dotfilesrepo" ] && dotfilesrepo="git@github.com:Frewacom/FARBS-Dotfiles.git" && repobranch="master"
+[ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/Frewacom/FARBS-Dotfiles.git" && repobranch="master"
 [ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/Frewacom/FARBS/master/archi3/progs.csv"
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
