@@ -15,7 +15,6 @@ while getopts ":a:r:b:p:h" o; do case "${o}" in
 esac done
 
 # DEFAULTS:
-[ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/Frewacom/FARBS-Dotfiles" && repobranch="master"
 [ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/Frewacom/FARBS/master/archi3/progs.csv"
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
@@ -213,9 +212,6 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
 installationloop
-
-# Install the dotfiles in the user's home directory
-putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
