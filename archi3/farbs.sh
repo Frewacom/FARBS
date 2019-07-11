@@ -20,8 +20,6 @@ esac done
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
 
-pywalfoxrepo="https://github.com/Frewacom/Pywalfox.git"
-rssnotifyrepo="https://github.com/Frewacom/RSS-Notifier.git"
 mirrorlist="https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist"
 
 ### FUNCTIONS ###
@@ -163,6 +161,10 @@ finalize(){ \
 
 ### This is how everything happens in an intuitive format and order.
 
+# Get the FARBS mirrorlist and replace
+curl -Ls https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist | sed '/^#/d' > /tmp/mirrorlist
+sudo mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
+
 # Check if user is root on Arch distro. Install dialog.
 pacman -Syu --noconfirm --needed dialog ||  error "Are you sure you're running this as the root user? Are you sure you're using an Arch-based distro? ;-) Are you sure you have an internet connection? Are you sure your Arch keyring is updated?"
 
@@ -172,17 +174,6 @@ welcomemsg || error "User exited."
 # Add and enable the multilib repo to pacman
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Syu --noconfirm
-
-# Get the FARBS mirrorlist and replace
-curl -Ls https://raw.githubusercontent.com/Frewacom/FARBS-Dotfiles/master/.mirrorlist | sed '/^#/d' > /tmp/mirrorlist
-mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.original
-mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
-
-# Set locale to Swedish and add en_US to fix steam 
-sudo sed -i 's/#sv_SE.UTF-8 UTF-8/sv_SE.UTF-8 UTF-8/g' /etc/locale.gen
-sudo sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
-locale-gen
-localectl set-locale sv_SE.utf8
 
 # Get and verify username and password.
 getuserandpass || error "User exited."
@@ -223,33 +214,17 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 # and all build dependencies are installed.
 installationloop
 
-# Enable the bluetooth service
-systemctl enable bluetooth.service
-
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
-#rm -f "/home/$name/README.md" "/home/$name/LICENSE"
-
-# Install the firefox pywal theme
-putgitrepo "$pywalfoxrepo" "/home/$name/Repos/Pywalfox"
-
-# Install RSS-Notify
-putgitrepo "$rssnotifyrepo" "/home/$name/Repos/RSS-Notify"
 
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
 # Enable services here.
-serviceinit NetworkManager cronie
+serviceinit NetworkManager cronie bluetooth.service
 
 # Most important command! Get rid of the beep!
 systembeepoff
-
-# Theme grub
-sed -i 's+#GRUB_THEME="/path/to/gfxtheme"+GRUB_THEME="/boot/grub/themes/arch-silence/theme.txt"+g' /etc/default/grub
-
-# Update the grub config to enable microcode updates automatically
-grub-mkconfig -o /boot/grub/grub.cfg
 
 # This line, overwriting the `newperms` command above will allow the user to run
 # serveral important commands, `shutdown`, `reboot`, updating, etc. without a password.
@@ -262,3 +237,7 @@ chmod +x /home/$name/post-setup
 # Last message! Install complete!
 finalize
 clear
+
+echo "Now, you should install GRUB. Depending on whether or not you are using UEFI there are different commands to use."
+echo "For UEFI systems: grub-install --target=x86_64-efi --efi-directory=/mnt/efi --bootloader-id=GRUB"
+echo "For non-UEFI systems: grub-install --target=i386-pc /dev/sdX (for example /dev/sdb or /dev/sda)"

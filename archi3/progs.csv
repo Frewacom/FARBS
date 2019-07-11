@@ -73,6 +73,7 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 ,kdeconnect,"sync stuff with your phone"
 ,emacs,"better editor than vim"
 ,grub,"I had issues with grub not being installed correctly and needed this"
+,efibootmgr,"to help install grub"
 ,redshift,"f.lux like thingy"
 ,steam,"to play some gamez"
 ,xbindkeys,"is used to bind mouse keys to keyboard commands"
