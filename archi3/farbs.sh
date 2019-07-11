@@ -214,6 +214,12 @@ manualinstall $aurhelper || error "Failed to install AUR helper."
 # and all build dependencies are installed.
 installationloop
 
+# Set locale to Swedish and add en_US to fix steam
+sudo sed -i 's/#sv_SE.UTF-8 UTF-8/sv_SE.UTF-8 UTF-8/g' /etc/locale.gen
+sudo sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
+sudo locale-gen
+sudo localectl set-locale sv_SE.utf8
+
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 
