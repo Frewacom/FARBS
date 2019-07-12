@@ -143,6 +143,25 @@ serviceinit() { for service in "$@"; do
 	done ;
 }
 
+installbluetooth() {
+	maininstall "bluez" "provides the Bluetooth protocol stack"
+	maininstall "bluez-utils" "provides the bluetoothctl utility"
+	
+	dialog --infobox "Enabling bluetooth service..." 4 40
+	systemctl enable bluetooth.service
+	systemctl start bluetooth.service	
+}
+
+showbluetoothdialog() {
+	dialog --title "Bluetooth?" \
+	--yesno "Do you want to install and acticate the bluetooth service?" 7 60
+
+	response=$?
+	case $response in
+   		0) installbluetooth ;;
+	esac	
+}
+
 systembeepoff() { dialog --infobox "Getting rid of that retarded error beep sound..." 10 50
 	rmmod pcspkr
 	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf ;
@@ -226,8 +245,11 @@ putgitrepo "$dotfilesrepo" "/home/$name/.dotfiles" "$repobranch"
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
+# Enable blueetoth?
+showbluetoothdialog
+
 # Enable services here.
-serviceinit NetworkManager cronie bluetooth.service
+serviceinit NetworkManager cronie
 
 # Most important command! Get rid of the beep!
 systembeepoff

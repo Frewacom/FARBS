@@ -83,6 +83,4 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 A,otf-font-awesome,"gives emojis that Fredrik hates but this version actually works."
 A,spotify,"is used to listen to that music"
 A,i3-resurrect-git,"restores workspace layouts and programs"
-,bluez,"provides the Bluetooth protocol stack"
-,bluez-utils,"provides the bluetoothctl utility"
 A,arch-silence-grub-theme,"is a nicer GRUB theme"
