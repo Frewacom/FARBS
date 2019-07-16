@@ -80,6 +80,7 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 ,xautomation,"is also used to bind mouse keys to keyboard commands"
 ,perl-anyevent-i3,"is used to save the i3 layout tree for persisent workspace layouts"
 ,intel-ucode,"enables microcode updates to the kernel for intel users."
+,ufw,"is a uncomplicated firewall manager"
 A,otf-font-awesome,"gives emojis that Fredrik hates but this version actually works."
 A,spotify,"is used to listen to that music"
 A,i3-resurrect-git,"restores workspace layouts and programs"
