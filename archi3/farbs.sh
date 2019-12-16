@@ -146,10 +146,11 @@ serviceinit() { for service in "$@"; do
 installbluetooth() {
 	maininstall "bluez" "provides the Bluetooth protocol stack"
 	maininstall "bluez-utils" "provides the bluetoothctl utility"
-	
+	maininstall "pulseaudio-bluetooth" "provides support for bluetooth headsets"
+
 	dialog --infobox "Enabling bluetooth service..." 4 40
 	systemctl enable bluetooth.service
-	systemctl start bluetooth.service	
+	systemctl start bluetooth.service
 }
 
 showbluetoothdialog() {
@@ -159,7 +160,7 @@ showbluetoothdialog() {
 	response=$?
 	case $response in
    		0) installbluetooth ;;
-	esac	
+	esac
 }
 
 systembeepoff() { dialog --infobox "Getting rid of that retarded error beep sound..." 10 50
