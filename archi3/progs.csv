@@ -96,3 +96,4 @@ A,mpdris2,"gives MPRIS2 support for MPD, and enables cover art in dunst notifica
 ,alsa-utils,"pulseaudio utils"
 ,zip,"for zipping files and folders"
 A,spicetify,"for styling spotify with your pywal colors"
+A,ferdi-bin,"for combining all shitty electron services into one less shitty one"
