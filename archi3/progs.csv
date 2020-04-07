@@ -98,3 +98,4 @@ A,mpdris2,"gives MPRIS2 support for MPD, and enables cover art in dunst notifica
 A,spicetify,"for styling spotify with your pywal colors"
 A,ferdi-bin,"for combining all shitty electron services into one less shitty one"
 A,xgetres,"for getting values from Xresources"
+A,xsetroot,"for live reloading xresources in dwm"
